@@ -12,3 +12,16 @@ describe('generateMessage', () => {
     expect(message).toInclude({ from, text });
   });
 });
+
+describe('generateLocationMessage', () => {
+  it('should generate correct location object', () => {
+    var from = 'Jen';
+    var latitude = 1;
+    var longitude = 3;
+    var url = 'https://www.google.com/maps?q=15,19'
+    var location = generateMessage(from, latitude, longitude);
+
+    expect(location.createdAt).toBeA('number');
+    expect(location).toInclude({ from, url });
+  });
+});
